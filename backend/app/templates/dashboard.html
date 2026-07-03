@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - Karmvikas HR{% endblock %}
+{% block content %}
+<h3 class="mb-4">Dashboard</h3>
+
+<div id="employee-dashboard" class="d-none">
+  <div class="row g-3 mb-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100 stat-card">
+        <div class="card-body d-flex align-items-center gap-3">
+          <span class="stat-icon"><i class="bi bi-calendar-check-fill"></i></span>
+          <div>
+            <h6 class="text-secondary mb-0">Today's Attendance</h6>
+            <p class="fs-6 fw-semibold mb-0" id="today-status">--</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h6 class="text-secondary mb-3">Leave Balances</h6>
+          <div class="row g-2" id="balance-cards"><div class="skeleton w-100"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h6 class="text-secondary mb-3">Recent Announcements</h6>
+      <div id="announcements-list">No announcements yet.</div>
+    </div>
+  </div>
+</div>
+
+<div id="admin-dashboard" class="d-none">
+  <div class="row g-3 mb-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100 stat-card">
+        <div class="card-body d-flex align-items-center gap-3">
+          <span class="stat-icon"><i class="bi bi-people-fill"></i></span>
+          <div>
+            <h6 class="text-secondary mb-0">Total Employees</h6>
+            <p class="fs-3 fw-bold mb-0" id="stat-headcount">--</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100 stat-card">
+        <div class="card-body d-flex align-items-center gap-3">
+          <span class="stat-icon"><i class="bi bi-diagram-3-fill"></i></span>
+          <div>
+            <h6 class="text-secondary mb-0">Departments</h6>
+            <p class="fs-3 fw-bold mb-0" id="stat-departments">--</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100 stat-card">
+        <div class="card-body d-flex align-items-center gap-3">
+          <span class="stat-icon"><i class="bi bi-hourglass-split"></i></span>
+          <div>
+            <h6 class="text-secondary mb-0">Pending Leave Approvals</h6>
+            <p class="fs-3 fw-bold mb-0" id="stat-pending-leaves">--</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h6 class="text-secondary mb-3">Pending Leave Requests</h6>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead><tr><th>Employee</th><th>Type</th><th>From</th><th>To</th><th></th></tr></thead>
+          <tbody id="pending-leaves-body"></tbody>
+        </table>
+      </div>
+      <div id="pending-leaves-empty" class="empty-state d-none">No pending leave requests.</div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

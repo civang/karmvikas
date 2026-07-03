@@ -1,0 +1,280 @@
+/* ---------- Design tokens (override Bootstrap 5.3 CSS variables) ---------- */
+:root,
+[data-bs-theme="light"] {
+  --bs-font-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --bs-primary: #4f46e5;
+  --bs-primary-rgb: 79, 70, 229;
+  --bs-link-color: #4f46e5;
+  --bs-link-color-rgb: 79, 70, 229;
+  --bs-link-hover-color: #4338ca;
+  --bs-border-radius: 0.6rem;
+  --bs-border-radius-sm: 0.45rem;
+  --bs-border-radius-lg: 0.85rem;
+  --bs-body-bg: #f8fafc;
+  --bs-tertiary-bg: #f1f5f9;
+
+  --brand-sidebar-bg: #ffffff;
+  --brand-shadow-1: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --brand-shadow-2: 0 4px 16px rgba(15, 23, 42, 0.08);
+}
+
+[data-bs-theme="dark"] {
+  --bs-primary: #818cf8;
+  --bs-primary-rgb: 129, 140, 248;
+  --bs-link-color: #a5b4fc;
+  --bs-link-color-rgb: 165, 180, 252;
+  --bs-body-bg: #0b1120;
+  --bs-tertiary-bg: #111827;
+
+  --brand-sidebar-bg: #0f172a;
+  --brand-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --brand-shadow-2: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+html {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+#app-shell {
+  min-height: 100vh;
+}
+
+main {
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  width: 252px;
+  min-width: 252px;
+  border-right: 1px solid var(--bs-border-color);
+  background-color: var(--brand-sidebar-bg);
+  transition: background-color 0.2s ease, left 0.2s ease;
+}
+
+.sidebar .brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 0.6rem;
+  background: linear-gradient(135deg, var(--bs-primary), #7c3aed);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.sidebar .nav-link {
+  color: var(--bs-secondary-color);
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.2rem;
+  padding: 0.55rem 0.75rem;
+  border-left: 2px solid transparent;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.sidebar .nav-link:hover {
+  background-color: var(--bs-tertiary-bg);
+  color: var(--bs-body-color);
+}
+
+.sidebar .nav-link.active {
+  background-color: rgba(var(--bs-primary-rgb), 0.12);
+  color: var(--bs-primary);
+  border-left-color: var(--bs-primary);
+  font-weight: 600;
+}
+
+.sidebar .nav-link.active:hover {
+  background-color: rgba(var(--bs-primary-rgb), 0.16);
+}
+
+.sidebar .nav-link i {
+  opacity: 0.85;
+  width: 1.1rem;
+  text-align: center;
+}
+
+/* ---------- Topbar ---------- */
+.topbar {
+  background-color: color-mix(in srgb, var(--bs-body-bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--bs-border-color);
+  transition: background-color 0.2s ease;
+}
+
+.avatar-badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bs-primary), #7c3aed);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius-lg);
+  transition: box-shadow 0.2s ease, transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.shadow-sm {
+  box-shadow: var(--brand-shadow-1) !important;
+}
+
+.card.shadow-sm:hover {
+  box-shadow: var(--brand-shadow-2) !important;
+  transform: translateY(-2px);
+}
+
+.stat-card .stat-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  background: rgba(var(--bs-primary-rgb), 0.12);
+  color: var(--bs-primary);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  font-weight: 500;
+  border-radius: var(--bs-border-radius);
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary {
+  box-shadow: 0 1px 2px rgba(var(--bs-primary-rgb), 0.3);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* ---------- Tables ---------- */
+.table {
+  --bs-table-border-color: var(--bs-border-color);
+  font-size: 0.9rem;
+}
+
+.table > thead > tr > th {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+  color: var(--bs-secondary-color);
+  background-color: var(--bs-tertiary-bg);
+  border-bottom: 1px solid var(--bs-border-color);
+  padding: 0.7rem 1rem;
+}
+
+.table > tbody > tr > td {
+  padding: 0.7rem 1rem;
+  vertical-align: middle;
+}
+
+.table > tbody > tr {
+  transition: background-color 0.12s ease;
+}
+
+/* ---------- Badges ---------- */
+.badge {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.4em 0.65em;
+  border-radius: 0.4rem;
+}
+
+/* ---------- Forms ---------- */
+.form-control, .form-select {
+  border-radius: var(--bs-border-radius-sm);
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: rgba(var(--bs-primary-rgb), 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.15);
+}
+
+.form-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--bs-secondary-color);
+  margin-bottom: 0.35rem;
+}
+
+/* ---------- Skeletons ---------- */
+.skeleton {
+  background: linear-gradient(90deg, var(--bs-secondary-bg) 25%, var(--bs-tertiary-bg) 37%, var(--bs-secondary-bg) 63%);
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+  border-radius: 0.375rem;
+  height: 1rem;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+/* ---------- Empty states ---------- */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--bs-secondary-color);
+}
+
+.empty-state i {
+  font-size: 1.75rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  opacity: 0.5;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 767.98px) {
+  .sidebar {
+    position: fixed;
+    z-index: 1040;
+    height: 100vh;
+    left: -252px;
+    box-shadow: var(--brand-shadow-2);
+    transition: left 0.2s ease;
+  }
+  .sidebar.show {
+    left: 0;
+  }
+}

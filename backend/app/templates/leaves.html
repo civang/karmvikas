@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Leave - Karmvikas HR{% endblock %}
+{% block content %}
+<h3 class="mb-4">Leave</h3>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h6 class="text-secondary mb-3">Apply for Leave</h6>
+        <form id="leave-form">
+          <div class="mb-2">
+            <select class="form-select" id="leave-type" required>
+              <option value="casual">Casual</option>
+              <option value="sick">Sick</option>
+              <option value="earned">Earned</option>
+              <option value="unpaid">Unpaid</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label small">Start Date</label>
+            <input type="date" class="form-control" id="leave-start" required>
+          </div>
+          <div class="mb-2">
+            <label class="form-label small">End Date</label>
+            <input type="date" class="form-control" id="leave-end" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Submit Request</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h6 class="text-secondary mb-3">My Leave Balances</h6>
+        <div class="row g-2" id="balance-cards"><div class="skeleton w-100"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm mb-4">
+  <div class="card-body">
+    <h6 class="text-secondary mb-3">My Leave History</h6>
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead><tr><th>Type</th><th>From</th><th>To</th><th>Status</th><th>Comment</th></tr></thead>
+        <tbody id="my-leaves-body"><tr><td colspan="5"><div class="skeleton"></div></td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm admin-only d-none" id="approvals-card">
+  <div class="card-body">
+    <h6 class="text-secondary mb-3">Pending Approvals</h6>
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead><tr><th>Employee</th><th>Type</th><th>From</th><th>To</th><th></th></tr></thead>
+        <tbody id="pending-approvals-body"></tbody>
+      </table>
+    </div>
+    <div id="approvals-empty" class="empty-state d-none">No pending leave requests.</div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/leaves.js') }}"></script>
+{% endblock %}

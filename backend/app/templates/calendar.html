@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Company Calendar - Karmvikas HR{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h3 class="mb-0">Company Calendar</h3>
+</div>
+
+<div class="card shadow-sm mb-4 admin-only d-none" id="add-event-card">
+  <div class="card-body">
+    <h6 class="text-secondary mb-3">Schedule an Event</h6>
+    <form id="event-form" class="row g-2 align-items-end">
+      <div class="col-md-3">
+        <label class="form-label small">Title</label>
+        <input type="text" class="form-control" id="event-title" required>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label small">Date</label>
+        <input type="date" class="form-control" id="event-date" required>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label small">Type</label>
+        <select class="form-select" id="event-type">
+          <option value="holiday">Holiday</option>
+          <option value="meeting">Meeting</option>
+          <option value="deadline">Deadline</option>
+          <option value="event" selected>Event</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label small">Description</label>
+        <input type="text" class="form-control" id="event-description">
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">Add</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row g-2 mb-3">
+  <div class="col-md-4">
+    <select class="form-select" id="type-filter">
+      <option value="">All Types</option>
+      <option value="holiday">Holidays</option>
+      <option value="meeting">Meetings</option>
+      <option value="deadline">Deadlines</option>
+      <option value="event">Events</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+</div>
+
+<div class="card shadow-sm">
+  <div class="table-responsive">
+    <table class="table align-middle mb-0">
+      <thead><tr><th>Date</th><th>Title</th><th>Type</th><th>Description</th><th class="admin-only d-none"></th></tr></thead>
+      <tbody id="events-body"><tr><td colspan="5"><div class="skeleton"></div></td></tr></tbody>
+    </table>
+  </div>
+  <div id="events-empty" class="empty-state d-none">
+    <i class="bi bi-calendar3"></i>
+    Nothing scheduled yet.
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Audit Logs - Karmvikas HR{% endblock %}
+{% block content %}
+<h3 class="mb-4">Audit Logs</h3>
+<div class="card shadow-sm">
+  <div class="table-responsive">
+    <table class="table align-middle mb-0">
+      <thead><tr><th>Time</th><th>User</th><th>Action</th><th>Entity</th><th>IP Address</th></tr></thead>
+      <tbody id="audit-body"><tr><td colspan="5"><div class="skeleton"></div></td></tr></tbody>
+    </table>
+  </div>
+  <div id="audit-empty" class="empty-state d-none">No audit log entries yet.</div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/audit_logs.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker compose *)",
+      "Bash(curl -s http://localhost:5000/health)",
+      "Bash(curl -s http://localhost:5000/ready)",
+      "Bash(docker compose exec -T backend python -c ' *)",
+      "Bash(rm -f /tmp/admin_access.txt /tmp/bob_access.txt /tmp/dept_id.txt /tmp/desig_id.txt /tmp/emp_id.txt /tmp/leave_id.txt)"
+    ]
+  }
+}
