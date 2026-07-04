@@ -14,3 +14,8 @@ class UserRepository:
         db.session.add(user)
         db.session.commit()
         return user
+
+    def update_password(self, user, password_hash):
+        user.password_hash = password_hash
+        db.session.commit()
+        return user

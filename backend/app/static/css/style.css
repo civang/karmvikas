@@ -74,7 +74,7 @@ main {
   transition: background-color 0.2s ease, left 0.2s ease;
 }
 
-.sidebar .brand-mark {
+.brand-mark {
   width: 34px;
   height: 34px;
   border-radius: 0.6rem;

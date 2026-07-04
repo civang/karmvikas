@@ -31,20 +31,4 @@ document.addEventListener("DOMContentLoaded", () => {
       spinner.classList.add("d-none");
     }
   });
-
-  document.getElementById("forgot-link").addEventListener("click", async (e) => {
-    e.preventDefault();
-    const email = prompt("Enter your account email:");
-    if (!email) return;
-    try {
-      await fetch(`${API_BASE}/auth/forgot-password`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      showToast("If an account with that email exists, a reset link has been sent.", "info");
-    } catch (err) {
-      showError(err);
-    }
-  });
 });

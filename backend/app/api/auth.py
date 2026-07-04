@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_jwt_extended import get_jwt, get_jwt_identity, jwt_required
 
 from app.extensions import limiter
-from app.schemas.auth_schema import LoginSchema, RegisterSchema
+from app.schemas.auth_schema import ForgotPasswordSchema, LoginSchema, RegisterSchema, ResetPasswordSchema
 from app.services.auth_service import AuthService
 from app.utils.audit import record_audit
 from app.utils.decorators import role_required
@@ -11,6 +11,8 @@ bp = Blueprint("auth", __name__, url_prefix="/api/v1/auth")
 
 register_schema = RegisterSchema()
 login_schema = LoginSchema()
+forgot_password_schema = ForgotPasswordSchema()
+reset_password_schema = ResetPasswordSchema()
 auth_service = AuthService()
 
 
@@ -54,8 +56,16 @@ def logout():
 @bp.post("/forgot-password")
 @limiter.limit("3 per hour")
 def forgot_password():
-    # Mocked: no transactional email provider configured for this project.
-    # A real implementation would issue a short-lived signed reset token and
-    # email it, without revealing whether the address exists in the system.
-    request.get_json(silent=True)
+    data = forgot_password_schema.load(request.get_json(silent=True) or {})
+    auth_service.request_password_reset(data["email"])
+    # Identical response whether or not the email exists - prevents
+    # attackers from using this endpoint to enumerate valid accounts.
     return jsonify(message="If an account with that email exists, a reset link has been sent."), 200
+
+
+@bp.post("/reset-password")
+@limiter.limit("5 per hour")
+def reset_password():
+    data = reset_password_schema.load(request.get_json(silent=True) or {})
+    auth_service.reset_password(data["token"], data["new_password"])
+    return jsonify(message="Password reset successfully. You can now sign in."), 200
