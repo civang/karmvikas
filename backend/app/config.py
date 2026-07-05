@@ -41,6 +41,9 @@ class DevelopmentConfig(BaseConfig):
 class TestingConfig(BaseConfig):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL", BaseConfig.SQLALCHEMY_DATABASE_URI)
+    # Rate limits exist to slow down real attackers, not our own test suite
+    # running hundreds of requests against the same endpoints in seconds.
+    RATELIMIT_ENABLED = False
 
 
 class ProductionConfig(BaseConfig):

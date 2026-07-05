@@ -5,7 +5,8 @@
       "name": "backend",
       "runtimeExecutable": "docker",
       "runtimeArgs": ["compose", "up", "backend"],
-      "port": 5000
+      "port": 5000,
+      "autoPort": false
     }
   ]
 }

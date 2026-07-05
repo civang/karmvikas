@@ -50,10 +50,11 @@ def _register_cli(app):
 
 
 def _init_logging(app):
-    logging.basicConfig(
-        level=logging.INFO,
-        format='{"time": "%(asctime)s", "level": "%(levelname)s", "logger": "%(name)s", "message": "%(message)s"}',
+    log_format = (
+        '{"time": "%(asctime)s", "level": "%(levelname)s", '
+        '"logger": "%(name)s", "message": "%(message)s"}'
     )
+    logging.basicConfig(level=logging.INFO, format=log_format)
 
 
 def _register_blueprints(app):

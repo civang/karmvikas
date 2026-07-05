@@ -45,6 +45,9 @@ isn't done yet.
 | Fonts / Icons | Google Fonts (Inter), Bootstrap Icons |
 | DevOps | Docker, Docker Compose |
 | Migrations | Alembic (via Flask-Migrate) |
+| Testing | pytest, run against a real Postgres database (not mocks) |
+| CI | GitHub Actions |
+| Email | Brevo (transactional email API) |
 
 No frontend framework or bundler is used deliberately — the UI is served
 directly by Flask (Jinja templates for layout shell + vanilla JS calling the
@@ -254,9 +257,11 @@ karmvikas/
 │   │   ├── templates/             # Jinja layout + page templates
 │   │   └── static/                # css/, js/ (vanilla JS API client + pages)
 │   ├── migrations/                # Alembic migration history
+│   ├── tests/                      # pytest suite (auth, IDOR, business logic, security)
 │   ├── requirements.txt / requirements-dev.txt
 │   └── Dockerfile
 ├── docker-compose.yml              # backend + PostgreSQL + Redis
+├── .github/workflows/tests.yml     # CI: pytest + flake8 on every push/PR
 ├── .env.example
 ├── docs/
 │   └── SRS.md                      # full software requirements spec
@@ -338,14 +343,12 @@ Actively developed, not yet production-deployed. Honest status as of now:
 
 **Done:** planning/SRS, project scaffolding, database schema + migrations,
 authentication & RBAC, all backend resource APIs, full responsive frontend,
-custom design system, security hardening pass.
+custom design system, security hardening pass, real password reset via email,
+automated test suite (52 tests, 85% coverage, run against real Postgres),
+CI pipeline (GitHub Actions), Git history.
 
 **Not yet done:**
-- Automated test suite (unit/integration/API tests) — everything so far has
-  been verified manually against the live running stack, not via `pytest`.
-- Git repository initialization / commit history.
-- CI/CD pipeline (GitHub Actions).
-- Production deployment.
+- Production deployment (Render/Neon/Upstash accounts not yet created).
 - OpenAPI/Swagger spec file, ER diagram image, architecture diagram image.
 
 See [CHANGELOG.md](CHANGELOG.md) for the detailed, dated history of what's

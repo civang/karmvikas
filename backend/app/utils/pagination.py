@@ -17,7 +17,13 @@ def parse_list_params(allowed_filters=None):
         if value is not None:
             filters[key] = value
 
-    return {"page": max(page, 1), "per_page": max(per_page, 1), "sort": sort, "search": search, "filters": filters}
+    return {
+        "page": max(page, 1),
+        "per_page": max(per_page, 1),
+        "sort": sort,
+        "search": search,
+        "filters": filters,
+    }
 
 
 def apply_sort(query, model, sort_param, allowed_fields):
