@@ -58,6 +58,10 @@ about end-to-end.
 
 ## Architecture
 
+> 📐 See [`docs/architecture.md`](docs/architecture.md) for rendered Mermaid
+> diagrams: system architecture, the request lifecycle, and a full
+> entity–relationship diagram.
+
 The backend follows a strict layered architecture. Each layer only calls the
 layer directly below it:
 
@@ -211,6 +215,13 @@ Notable schema decisions:
 
 ## API Overview
 
+**Interactive documentation:** a full OpenAPI 3.0 spec
+([`backend/app/static/openapi.yaml`](backend/app/static/openapi.yaml)) is served
+as a live Swagger UI at **`/api/docs`** when the app is running — every
+endpoint, request/response schema, and auth requirement is browsable and
+testable in the browser (use the "Authorize" button with a Bearer access token
+to try protected routes).
+
 All endpoints are versioned under `/api/v1`. Full list of resource groups:
 
 | Resource | Base path | Notes |
@@ -344,12 +355,12 @@ Actively developed, not yet production-deployed. Honest status as of now:
 **Done:** planning/SRS, project scaffolding, database schema + migrations,
 authentication & RBAC, all backend resource APIs, full responsive frontend,
 custom design system, security hardening pass, real password reset via email,
-automated test suite (52 tests, 85% coverage, run against real Postgres),
-CI pipeline (GitHub Actions), Git history.
+automated test suite (56 tests, run against real Postgres), CI pipeline
+(GitHub Actions), Git history, OpenAPI 3.0 spec with live Swagger UI at
+`/api/docs`, Mermaid ER + architecture diagrams.
 
 **Not yet done:**
 - Production deployment (Render/Neon/Upstash accounts not yet created).
-- OpenAPI/Swagger spec file, ER diagram image, architecture diagram image.
 
 See [CHANGELOG.md](CHANGELOG.md) for the detailed, dated history of what's
 been built, and [`docs/SRS.md`](docs/SRS.md) for the original requirements

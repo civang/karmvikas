@@ -8,6 +8,11 @@ def index():
     return redirect("/dashboard")
 
 
+@bp.get("/api/docs")
+def api_docs():
+    return render_template("api_docs.html")
+
+
 @bp.get("/login")
 def login_page():
     return render_template("login.html")

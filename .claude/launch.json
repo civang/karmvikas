@@ -7,6 +7,12 @@
       "runtimeArgs": ["compose", "up", "backend"],
       "port": 5000,
       "autoPort": false
+    },
+    {
+      "name": "timeless-chime",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["-3", "-m", "http.server", "8321", "--directory", "C:\\Users\\SHIVANG DUTTA\\Desktop\\THETIMELESSCHIME"],
+      "port": 8321
     }
   ]
 }

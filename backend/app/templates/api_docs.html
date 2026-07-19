@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Docs - Karmvikas HR</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.17.14/swagger-ui.css">
+<style>
+  body { margin: 0; background: #fafafa; }
+  .topbar-wrapper { display: none; }
+  #api-banner {
+    background: linear-gradient(135deg, #4f46e5, #312e81);
+    color: #fff;
+    padding: 14px 24px;
+    font: 600 15px/1.4 -apple-system, "Segoe UI", sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  #api-banner a { color: #c7d2fe; }
+</style>
+</head>
+<body>
+<div id="api-banner">
+  <span>Karmvikas HR API</span>
+  <span style="opacity:.7;font-weight:400;">— interactive reference. Use the "Authorize" button with a Bearer access token to try protected endpoints.</span>
+</div>
+<div id="swagger-ui"></div>
+<script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.17.14/swagger-ui-bundle.js"></script>
+<script>
+  window.onload = () => {
+    window.ui = SwaggerUIBundle({
+      url: "{{ url_for('static', filename='openapi.yaml') }}",
+      dom_id: "#swagger-ui",
+      deepLinking: true,
+      presets: [SwaggerUIBundle.presets.apis],
+      layout: "BaseLayout",
+    });
+  };
+</script>
+</body>
+</html>
