@@ -12,7 +12,7 @@ class CalendarEventRepository:
         return q.order_by(CalendarEvent.date.asc())
 
     def get_by_id(self, event_id):
-        return CalendarEvent.query.get(event_id)
+        return db.session.get(CalendarEvent, event_id)
 
     def create(self, **kwargs):
         event = CalendarEvent(**kwargs)

@@ -7,7 +7,7 @@ class AnnouncementRepository:
         return Announcement.query.order_by(Announcement.created_at.desc())
 
     def get_by_id(self, announcement_id):
-        return Announcement.query.get(announcement_id)
+        return db.session.get(Announcement, announcement_id)
 
     def create(self, **kwargs):
         announcement = Announcement(**kwargs)

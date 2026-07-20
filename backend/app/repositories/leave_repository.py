@@ -4,7 +4,7 @@ from app.models.leave import LeaveBalance, LeaveRequest
 
 class LeaveRequestRepository:
     def get_by_id(self, leave_id):
-        return LeaveRequest.query.get(leave_id)
+        return db.session.get(LeaveRequest, leave_id)
 
     def create(self, **kwargs):
         leave = LeaveRequest(**kwargs)

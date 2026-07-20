@@ -6,7 +6,7 @@ from app.models.department import Department
 
 class DepartmentRepository:
     def get_by_id(self, department_id):
-        return Department.query.get(department_id)
+        return db.session.get(Department, department_id)
 
     def get_by_name(self, name):
         return Department.query.filter_by(name=name).first()

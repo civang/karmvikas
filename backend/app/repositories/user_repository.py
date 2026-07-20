@@ -7,7 +7,7 @@ class UserRepository:
         return User.query.filter_by(email=email).first()
 
     def get_by_id(self, user_id):
-        return User.query.get(user_id)
+        return db.session.get(User, user_id)
 
     def create(self, **kwargs):
         user = User(**kwargs)

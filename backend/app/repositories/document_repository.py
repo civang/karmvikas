@@ -4,7 +4,7 @@ from app.models.employee_document import EmployeeDocument
 
 class DocumentRepository:
     def get_by_id(self, document_id):
-        return EmployeeDocument.query.get(document_id)
+        return db.session.get(EmployeeDocument, document_id)
 
     def query(self, employee_id=None):
         q = EmployeeDocument.query

@@ -4,7 +4,7 @@ from app.models.department import Designation
 
 class DesignationRepository:
     def get_by_id(self, designation_id):
-        return Designation.query.get(designation_id)
+        return db.session.get(Designation, designation_id)
 
     def query(self):
         return Designation.query
