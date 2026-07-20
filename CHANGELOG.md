@@ -32,5 +32,8 @@ project adheres to [Semantic Versioning](https://semver.org/).
 - Real password reset via Brevo transactional email (signed, single-use, time-limited tokens), welcome emails on registration, dedicated Forgot/Reset Password pages.
 - Automated test suite: 52 tests (pytest) against a real Postgres database covering auth (registration RBAC, login, refresh rotation/revocation, password reset single-use enforcement), employee self-service IDOR, attendance duplicate-prevention, leave balance business logic, and document upload/IDOR security. 85% overall coverage, 94-100% on the security-critical paths.
 - GitHub Actions CI (`.github/workflows/tests.yml`): runs the full test suite with coverage plus `flake8` against Postgres/Redis service containers on every push/PR to `main`.
-- OpenAPI 3.0 specification (`backend/app/static/openapi.yaml`) documenting all 40 endpoints with request/response schemas, auth requirements, and status codes; served as an interactive Swagger UI at `/api/docs`. Added 4 tests covering the docs route, spec validity, and the previously-untested `/health` and `/ready` ops endpoints.
+- OpenAPI 3.0 specification (`backend/app/static/openapi.yaml`) documenting all 40 endpoints with request/response schemas, auth requirements, and status codes; served as an interactive Swagger UI at `/api/docs`. Added 5 tests covering the docs route, spec validity/completeness, and the previously-untested `/health` and `/ready` ops endpoints.
 - Mermaid architecture, request-lifecycle, and entity–relationship diagrams (`docs/architecture.md`), rendering natively on GitHub.
+
+### Changed
+- Replaced the legacy `Model.query.get(pk)` calls across all 7 repositories with the SQLAlchemy 2.0 `db.session.get(Model, pk)` API, removing `LegacyAPIWarning` deprecation warnings from the test run.

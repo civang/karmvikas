@@ -355,7 +355,7 @@ Actively developed, not yet production-deployed. Honest status as of now:
 **Done:** planning/SRS, project scaffolding, database schema + migrations,
 authentication & RBAC, all backend resource APIs, full responsive frontend,
 custom design system, security hardening pass, real password reset via email,
-automated test suite (56 tests, run against real Postgres), CI pipeline
+automated test suite (57 tests, run against real Postgres), CI pipeline
 (GitHub Actions), Git history, OpenAPI 3.0 spec with live Swagger UI at
 `/api/docs`, Mermaid ER + architecture diagrams.
 
